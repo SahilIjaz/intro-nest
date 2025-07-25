@@ -5,7 +5,7 @@ import { UserServices } from "./user.services";
 export class UserController{
     
     @Get()
-    getUsers(@Query('gender') query:any){
+    getUsers(@Query('name') query:any){
         const getUsers=new UserServices();
     return getUsers.getAllUsers();
     }
