@@ -10,11 +10,11 @@ export class UserServices{
     }
 
     getUserById(id:number){
-        return this.users.find(user => user.id===id);
+        return this.users.find(user => user.id === id);
     }
 
     createUser(user:{id:number, name:string,age:number}){
         this.users.push(user);
-        return user;
+        return this.users;
     }
 }
