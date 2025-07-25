@@ -7,6 +7,10 @@ export class UserController{
     @Get()
     getUsers(@Query() query:any){
         const getUsers=new UserServices();
+        if(query.name)
+        {
+            return getUsers.getAllUsers().filter(user => user.name === query.name);
+        }
     return getUsers.getAllUsers();
     }
 
