@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from "@nestjs/common";
+import { Controller, Get, Post, Param } from "@nestjs/common";
 import { UserServices } from "./user.services";
 
 @Controller('users')
@@ -18,8 +18,8 @@ export class UserController{
     }
 
     @Get(':id')
-    getUserById(id:number){
+    getUserById(@Param('id') id:any){
         const getUserById=new UserServices();
-        return getUserById.getUserById(id);
+        return getUserById.getUserById(+id);
     }
 }
