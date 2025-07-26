@@ -3,24 +3,29 @@ import { UserServices } from "./user.services";
 
 @Controller('users')
 export class UserController{
-    
+userServices:UserServices;
+
+constructor(){
+    this.userServices = new UserServices();
+}
+
     @Get()
     getUsers(@Query('limit',  new DefaultValuePipe(10), ParseIntPipe) limit:number,
             @Query('page',new DefaultValuePipe(1), ParseIntPipe) page:number ){
-    const getUsers=new UserServices();
-    return getUsers.getAllUsers();
+                console.log('imite ss ',limit);
+                console.log('pgges required wre : ',page);
+
+    return this.userServices.getAllUsers();
     }
 
 
     @Post()
     createUser(){
-         const createUser=new UserServices();
-         return createUser.createUser({id:3, name:'Doe', age:30});
+         return this.userServices.createUser({id:3, name:'Doe', age:30});
     }
 
     @Get(':id')
     getUserById(@Param('id', ParseIntPipe) id:number){
-        const getUserById=new UserServices();
-        return getUserById.getUserById(id);
+        return this.userServices.getUserById(id);
     }
 }
