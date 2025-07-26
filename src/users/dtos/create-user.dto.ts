@@ -1,7 +1,7 @@
 import { IsEmail, isEmpty, IsNumber, IsString } from 'class-validator';
 
-export class createUser {
-  @IsString({ message: 'Id needs to be a string value.' })
+export class createUserDto {
+  @IsNumber()
   id: number;
 
   @IsString({ message: 'Name shoud be in string.' })
