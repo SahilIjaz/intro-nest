@@ -5,12 +5,9 @@ import { UserServices } from "./user.services";
 export class UserController{
     
     @Get()
-    getUsers(@Query('limit',  new DefaultValuePipe(10)) query:any){
-        const getUsers=new UserServices();
-        if(query.name)
-        {
-            return getUsers.getAllUsers().filter(user => user.name === query.name);
-        }
+    getUsers(@Query('limit',  new DefaultValuePipe(10), ParseIntPipe) limit:number,
+            @Query('page',new DefaultValuePipe(1), ParseIntPipe) page:number ){
+    const getUsers=new UserServices();
     return getUsers.getAllUsers();
     }
 
