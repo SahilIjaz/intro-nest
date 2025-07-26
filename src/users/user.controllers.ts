@@ -33,8 +33,7 @@ export class UserController {
 
   @Post()
   createUser(@Body(new ValidationPipe()) user: createUserDto) {
-    return 'User created.';
-    // this.userServices.createUser(user);
+    return this.userServices.createUser(user);
   }
 
   @Get(':id')
