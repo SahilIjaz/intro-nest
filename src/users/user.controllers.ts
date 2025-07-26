@@ -21,7 +21,7 @@ constructor(){
 
     @Post()
     createUser(){
-         return this.userServices.createUser({id:3, name:'Doe', age:30});
+         return this.userServices.createUser({id:3, name:'Doe', age:30, email:'doe@gamil.com'});
     }
 
     @Get(':id')
