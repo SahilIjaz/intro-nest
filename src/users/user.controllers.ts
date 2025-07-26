@@ -1,11 +1,11 @@
-import { Controller, Get, Post, Param, Query } from "@nestjs/common";
+import { Controller, Get, Post, Param, Query, ParseIntPipe, DefaultValuePipe} from "@nestjs/common";
 import { UserServices } from "./user.services";
 
 @Controller('users')
 export class UserController{
     
     @Get()
-    getUsers(@Query() query:any){
+    getUsers(@Query('limit',  new DefaultValuePipe(10)) query:any){
         const getUsers=new UserServices();
         if(query.name)
         {
@@ -22,8 +22,8 @@ export class UserController{
     }
 
     @Get(':id')
-    getUserById(@Param('id') id:any){
+    getUserById(@Param('id', ParseIntPipe) id:number){
         const getUserById=new UserServices();
-        return getUserById.getUserById(+id);
+        return getUserById.getUserById(id);
     }
 }
