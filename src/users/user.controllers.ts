@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { UserServices } from './user.services';
 import { createUserDto } from './dtos/create-user.dto';
+import { getUserParam } from './dtos/get-user-param.dto';
 
 @Controller('users')
 export class UserController {
@@ -20,13 +21,16 @@ export class UserController {
     this.userServices = new UserServices();
   }
 
-  @Get()
+  @Get('')
   getUsers(
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('isMarried') isMarried: boolean,
+    // @Param() param: getUserParam,
   ) {
     console.log('imite ss ', limit);
     console.log('pgges required wre : ', page);
+    console.log('params has :', isMarried);
 
     return this.userServices.getAllUsers();
   }
