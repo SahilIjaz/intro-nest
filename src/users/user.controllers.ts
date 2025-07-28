@@ -16,11 +16,7 @@ import { getUserParam } from './dtos/get-user-param.dto';
 import { updateuserDto } from './dtos/update-user.dto';
 @Controller('users')
 export class UserController {
-  userServices: UserServices;
-
-  constructor() {
-    this.userServices = new UserServices();
-  }
+  constructor(private userServices: UserServices) {}
 
   @Get('')
   getUsers(
