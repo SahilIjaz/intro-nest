@@ -8,11 +8,12 @@ import {
   DefaultValuePipe,
   Body,
   ValidationPipe,
+  Patch,
 } from '@nestjs/common';
 import { UserServices } from './user.services';
 import { createUserDto } from './dtos/create-user.dto';
 import { getUserParam } from './dtos/get-user-param.dto';
-
+import { updateuserDto } from './dtos/update-user.dto';
 @Controller('users')
 export class UserController {
   userServices: UserServices;
@@ -43,5 +44,10 @@ export class UserController {
   @Get(':id')
   getUserById(@Param('id', ParseIntPipe) id: number) {
     return this.userServices.getUserById(id);
+  }
+
+  @Patch()
+  updateUser(@Body() user: updateuserDto) {
+    console.log('user update method created successfully.');
   }
 }
