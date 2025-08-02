@@ -10,6 +10,7 @@ import {
   ValidationPipe,
   Patch,
 } from '@nestjs/common';
+console.log('ok');
 import { UserServices } from './user.services';
 import { createUserDto } from './dtos/create-user.dto';
 import { getUserParam } from './dtos/get-user-param.dto';
